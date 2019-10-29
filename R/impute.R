@@ -126,6 +126,7 @@ combine.impute.output = function(inputfile.prefix, outputfile, is.male, imputein
 #' @param problemloci Full path to the problematic loci reference file
 #' @param impute_exe Path to the impute executable (can be found if its in $PATH)
 #' @param min_normal_depth Minimal depth in the matched normal required for a SNP to be used
+
 #' @param chrom_names A vector containing the names of chromosomes to be included
 #' @param snp6_reference_info_file SNP6 only parameter Default: NA
 #' @param heterozygousFilter SNP6 only parameter Default: NA
@@ -142,7 +143,8 @@ run_haplotyping = function(chrom, tumourname, normalname, ismale, imputeinfofile
                               imputeinfofile=imputeinfofile,
                               is.male=ismale,
                               problemLociFile=problemloci,
-                              useLociFile=NA)
+                              useLociFile=NA,
+			      min_normal_depth=min_normal_depth)
   } else {
     generate.impute.input.snp6(infile.germlineBAF=paste(tumourname, "_germlineBAF.tab", sep=""),
                                infile.tumourBAF=paste(tumourname, "_mutantBAF.tab", sep=""),
